@@ -93,7 +93,7 @@ $(function() {
 		return false;
 	});
 	$('.burnsoft:checked, #image').attr('disabled', 'disabled');
-	$('.burnsoft').clicked(function()  {
+	$('.burnsoft').click(function()  {
 		// install, recheck, disable control
 	})
 /* can't use ajax as we need to target an iframe for to get all the output */
@@ -119,6 +119,8 @@ function polling() {
 			},
 			function(data) {
 				$('#burner').empty();
+				if (data.length == 0) return;
+				
 				$.each(data, function(idx, text) {
 					$('#burner').append(
 						$('<option></option>').html(text)
