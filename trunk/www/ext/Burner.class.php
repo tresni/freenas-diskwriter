@@ -106,7 +106,7 @@ abstract class Burner {
 	
 	static private function install_cam_preinit() {
 		// let's go for the kldload preinit then
-		
+		// kldload atapicam.ko
 	}
 	
 	static private function install_atapi_cam_module() {
@@ -287,8 +287,8 @@ class BurnerFactory {
 	}
 
 	function find_burners_for_image($img) {
-		if (!util_is_iso_image($img)) return array();
 		if (!file_exists($img)) return array();
+		if (!util_is_iso_image($img)) return array();
 		
 		$res = exec('du -k ' . $img);
 		list($size, $name) = preg_split('/\s+/', $res, 2);
